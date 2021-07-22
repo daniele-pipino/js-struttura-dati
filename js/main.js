@@ -8,7 +8,7 @@ let cardDisplay = document.getElementById('card-display');
 
 //* Inizializzazzione dell'oggetto
 const card = {
-    nome: '',
+    nome: 'GinoPaoli',
     cost: ['6', 'R', 'R'],
     tipo: 'Creatura',
     specificita: 'Ninja',
@@ -30,3 +30,16 @@ const card = {
     costituzione: '13',
     bordo: '#12345'
 }
+
+// inserimento oggetto in pagina
+
+const printingCard = `<ul>
+<li><strong>Nome:</strong> ${card.nome}</li>
+<li><strong>Costo:</strong> ${card.cost.join(', ')}</li>
+<li><strong>Tipo:</strong> ${card.tipo} -${card.specificita}</li>
+<li><strong>Espansione:</strong> ${card.espansione.expNumber}
+<li><strong>Rarità:</strong> ${card.espansione.rarity}</li>
+<li><strong>--------Abilità------</strong></li>
+</ul>`
+
+cardDisplay.innerHTML = printingCard;
