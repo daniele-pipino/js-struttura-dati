@@ -10,8 +10,8 @@ let cardDisplay = document.getElementById('card-display');
 const card = {
     nome: 'GinoPaoli',
     cost: ['6', 'R', 'R'],
-    tipo: 'Creatura',
-    specificita: 'Ninja',
+    tipo: 'Artifact Creatur',
+    specificita: 'Spirit',
     espansione: {
         expNumber: 12,
         rarity: 'silver',
@@ -21,10 +21,10 @@ const card = {
         descrizione: 'Descrizione carta',
     },
     flavorText: {
-        testo: 'Lorem....',
+        testo: 'Lorem ipsum dokjbwhjcbcbxbwcbhbhwbcb',
         autore: 'Ddhcbcibe'
     },
-    autore: 'ciaociao',
+    illustratore: 'ciaociao',
     numeroCollezione: '127/350',
     forza: '13',
     costituzione: '13',
@@ -34,12 +34,22 @@ const card = {
 // inserimento oggetto in pagina
 
 const printingCard = `<ul>
+<strong>-----Top card------</strong>
 <li><strong>Nome:</strong> ${card.nome}</li>
 <li><strong>Costo:</strong> ${card.cost.join(', ')}</li>
-<li><strong>Tipo:</strong> ${card.tipo} -${card.specificita}</li>
+<li><strong>Tipo:</strong> ${card.tipo} - ${card.specificita}</li>
 <li><strong>Espansione:</strong> ${card.espansione.expNumber}
 <li><strong>Rarità:</strong> ${card.espansione.rarity}</li>
-<li><strong>--------Abilità------</strong></li>
+<strong>--------Abilità------</strong>
+<li><strong>Costo:</strong> ${card.abilita.costoAbilita}</li>
+<li><strong>Descrizione:</strong> ${card.abilita.descrizione}</li>
+<strong>----Flavor-text----</strong> 
+<li><i>${card.flavorText.testo}</i> </li>
+<li><strong>Autore:</strong> ${card.flavorText.autore}</li>
+<strong>------Bottom card-------</strong>
+<li><strong>Illustratore</strong> ${card.illustratore}</li>
+<li><strong>N di collezione</strong> ${card.numeroCollezione}</li>
+<li><strong>Forza / costituzione</strong> ${card.forza}/${card.costituzione}</li>
 </ul>`
 
 cardDisplay.innerHTML = printingCard;
