@@ -7,33 +7,85 @@ Una volta definita la struttura, stampiamo sulla pagina HTML tutte le informazio
 let cardDisplay = document.getElementById('card-display');
 
 //* Inizializzazzione dell'oggetto
-const card = {
-    nome: 'GinoPaoli',
-    cost: ['6', 'R', 'R'],
-    tipo: 'Artifact Creatur',
-    specificita: 'Spirit',
-    espansione: {
-        expNumber: 12,
-        rarity: 'silver',
+const card = [
+    {
+        id: 1,
+        nome: 'GinoPaoli',
+        cost: ['6', 'R', 'R'],
+        tipo: 'Artifact Creatur',
+        specificita: 'Spirit',
+        espansione: {
+            expNumber: 12,
+            rarity: 'silver',
+        },
+        abilita: {
+            costoAbilita: ['R', 'T'],
+            descrizione: 'Descrizione carta',
+        },
+        flavorText: {
+            testo: 'Lorem ipsum dokjbwhjcbcbxbwcbhbhwbcb',
+            autore: 'Ddhcbcibe'
+        },
+        illustratore: 'ciaociao',
+        numeroCollezione: '127/350',
+        forza: '13',
+        costituzione: '13',
+        bordo: '#12345'
     },
-    abilita: {
-        costoAbilita: ['R', 'T'],
-        descrizione: 'Descrizione carta',
+    {
+        id: 2,
+        nome: 'GinoPaoli',
+        cost: ['6', 'R', 'R'],
+        tipo: 'Artifact Creatur',
+        specificita: 'Spirit',
+        espansione: {
+            expNumber: 12,
+            rarity: 'silver',
+        },
+        abilita: {
+            costoAbilita: ['R', 'T'],
+            descrizione: 'Descrizione carta',
+        },
+        flavorText: {
+            testo: 'Lorem ipsum dokjbwhjcbcbxbwcbhbhwbcb',
+            autore: 'Ddhcbcibe'
+        },
+        illustratore: 'ciaociao',
+        numeroCollezione: '127/350',
+        forza: '13',
+        costituzione: '13',
+        bordo: '#12345'
     },
-    flavorText: {
-        testo: 'Lorem ipsum dokjbwhjcbcbxbwcbhbhwbcb',
-        autore: 'Ddhcbcibe'
+    {
+        id: 3,
+        nome: 'GinoPaoli',
+        cost: ['6', 'R', 'R'],
+        tipo: 'Artifact Creatur',
+        specificita: 'Spirit',
+        espansione: {
+            expNumber: 12,
+            rarity: 'silver',
+        },
+        abilita: {
+            costoAbilita: ['R', 'T'],
+            descrizione: 'Descrizione carta',
+        },
+        flavorText: {
+            testo: 'Lorem ipsum dokjbwhjcbcbxbwcbhbhwbcb',
+            autore: 'Ddhcbcibe'
+        },
+        illustratore: 'ciaociao',
+        numeroCollezione: '127/350',
+        forza: '13',
+        costituzione: '13',
+        bordo: '#12345'
     },
-    illustratore: 'ciaociao',
-    numeroCollezione: '127/350',
-    forza: '13',
-    costituzione: '13',
-    bordo: '#12345'
-}
+]
 
 // inserimento oggetto in pagina
 
-const printingCard = `<ul>
+const printingCard =
+    `<ul>
 <strong>-----Top card------</strong>
 <li><strong>Nome:</strong> ${card.nome}</li>
 <li><strong>Costo:</strong> ${card.cost.join(', ')}</li>
@@ -53,3 +105,11 @@ const printingCard = `<ul>
 </ul>`
 
 cardDisplay.innerHTML = printingCard;
+
+// prova funzione  per stampare la card
+
+// Completiamo il nostro archivio delle carte aggiungendo i seguenti step:
+// Creiamo un mazzo di carte
+// Stampiamo tutte  le carte su schermo
+// Aggiungiamo un piccolo form in HTML
+// Ragioniamo pian pianino sulla logica dei filtri
