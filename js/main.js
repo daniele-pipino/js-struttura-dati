@@ -82,8 +82,7 @@ const deck = [
 ]
 
 
-// recupero elemento html
-let cardDisplay = document.getElementById('card-display');
+
 
 // creazione di una funzione per creare la struttura della card
 const generateCardstructure = (obj) => {
@@ -118,3 +117,19 @@ const generateCardstructure = (obj) => {
 // Stampiamo tutte  le carte su schermo
 // Aggiungiamo un piccolo form in HTML
 // Ragioniamo pian pianino sulla logica dei filtri
+
+// creazione del ciclo for per l'array di carte
+
+// variabile d'appoggio
+let printingCard = '';
+for (let i = 0; i < deck.length; i++) {
+    const currentCard = deck[i];
+    printingCard += generateCardstructure(currentCard);
+}
+
+// recupero elemento html
+let cardDisplay = document.getElementById('card-display');
+
+// stampa card in pagina
+
+cardDisplay.innerHTML = printingCard;
