@@ -3,11 +3,10 @@ Una volta definita la struttura, stampiamo sulla pagina HTML tutte le informazio
 
 // --------------------------------------------- Svolgimento -------------------------------------------//
 
-// recupero elemento html
-let cardDisplay = document.getElementById('card-display');
+
 
 //* Inizializzazzione dell'oggetto
-const card = [
+const deck = [
     {
         id: 1,
         nome: 'GinoPaoli',
@@ -82,31 +81,37 @@ const card = [
     },
 ]
 
-// inserimento oggetto in pagina
 
-const printingCard =
-    `<ul>
-<strong>-----Top card------</strong>
-<li><strong>Nome:</strong> ${card.nome}</li>
-<li><strong>Costo:</strong> ${card.cost.join(', ')}</li>
-<li><strong>Tipo:</strong> ${card.tipo} - ${card.specificita}</li>
-<li><strong>Espansione:</strong> ${card.espansione.expNumber}
-<li><strong>Rarità:</strong> ${card.espansione.rarity}</li>
-<strong>--------Abilità------</strong>
-<li><strong>Costo:</strong> ${card.abilita.costoAbilita}</li>
-<li><strong>Descrizione:</strong> ${card.abilita.descrizione}</li>
-<strong>----Flavor-text----</strong> 
-<li><i>${card.flavorText.testo}</i> </li>
-<li><strong>Autore:</strong> ${card.flavorText.autore}</li>
-<strong>------Bottom card-------</strong>
-<li><strong>Illustratore</strong> ${card.illustratore}</li>
-<li><strong>N di collezione</strong> ${card.numeroCollezione}</li>
-<li><strong>Forza / costituzione</strong> ${card.forza}/${card.costituzione}</li>
-</ul>`
+// recupero elemento html
+let cardDisplay = document.getElementById('card-display');
 
-cardDisplay.innerHTML = printingCard;
+// creazione di una funzione per creare la struttura della card
+const generateCardstructure = (obj) => {
 
-// prova funzione  per stampare la card
+    // inserimento oggetto in pagina
+    const cardStructure =
+        `<ul>
+        <strong>-----Top card------</strong>
+        <li><strong>Nome:</strong> ${obj.nome}</li>
+        <li><strong>Costo:</strong> ${obj.cost.join(', ')}</li>
+        <li><strong>Tipo:</strong> ${obj.tipo} - ${obj.specificita}</li>
+        <li><strong>Espansione:</strong> ${obj.espansione.expNumber}
+        <li><strong>Rarità:</strong> ${obj.espansione.rarity}</li>
+        <strong>--------Abilità------</strong>
+        <li><strong>Costo:</strong> ${obj.abilita.costoAbilita}</li>
+        <li><strong>Descrizione:</strong> ${obj.abilita.descrizione}</li>
+        <strong>----Flavor-text----</strong> 
+        <li><i>${obj.flavorText.testo}</i> </li>
+        <li><strong>Autore:</strong> ${obj.flavorText.autore}</li>
+        <strong>------Bottom obj-------</strong>
+        <li><strong>Illustratore</strong> ${obj.illustratore}</li>
+        <li><strong>N di collezione</strong> ${obj.numeroCollezione}</li>
+        <li><strong>Forza / costituzione</strong> ${obj.forza}/${obj.costituzione}</li>
+          </ul>` ;
+
+    //   risultato
+    return cardStructure;
+}
 
 // Completiamo il nostro archivio delle carte aggiungendo i seguenti step:
 // Creiamo un mazzo di carte
