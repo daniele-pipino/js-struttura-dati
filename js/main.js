@@ -25,8 +25,8 @@ const starterDeck = [
         },
         illustratore: 'ciaociao',
         numeroCollezione: '127/350',
-        forza: '13',
-        costituzione: '13',
+        forza: 13,
+        costituzione: 13,
         bordo: '#12345'
     },
     {
@@ -49,8 +49,8 @@ const starterDeck = [
         },
         illustratore: 'ciaociao',
         numeroCollezione: '127/350',
-        forza: '18',
-        costituzione: '25',
+        forza: 18,
+        costituzione: 25,
         bordo: '#12345'
     },
     {
@@ -73,8 +73,8 @@ const starterDeck = [
         },
         illustratore: 'ciaociao',
         numeroCollezione: '127/350',
-        forza: '12',
-        costituzione: '9',
+        forza: 12,
+        costituzione: 9,
         bordo: '#12345'
     },
 ]
@@ -172,11 +172,25 @@ filterButton.addEventListener('click', () => {
     // ciclo per il controllo delle card
     for (let i = 0; i < starterDeck.length; i++) {
         const currentCard = starterDeck[i];
-        if (currentCard[selectValue] == textValue) {
-            filteredDeck.push(currentCard);
+
+
+        // gestione filtro con diverse casistiche 
+        switch (selectValue) {
+            // gestione numeri semplici
+            case 'id':
+            case 'forza':
+            case 'costituzione':
+                if (currentCard[selectValue] == textValue) {
+                    filteredDeck.push(currentCard);
+                }
+                break;
+            // gestione stringhe ed array di stringhe
+            default:
+                if (currentCard[selectValue].includes(textValue)) {
+                    filteredDeck.push(currentCard);
+                }
         }
     }
-    console.log(filteredDeck);
 
     generateDeck(filteredDeck);
 });
