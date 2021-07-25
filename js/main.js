@@ -3,16 +3,14 @@ Una volta definita la struttura, stampiamo sulla pagina HTML tutte le informazio
 
 // --------------------------------------------- Svolgimento -------------------------------------------//
 
-
-
 //* Inizializzazzione dell'oggetto
-const deck = [
+const starterDeck = [
     {
         id: 1,
         nome: 'GinoPaoli',
         cost: ['6', 'R', 'R'],
         tipo: 'Artifact Creatur',
-        specificita: 'Spirit',
+        subtipo: 'Spirit',
         espansione: {
             expNumber: 12,
             rarity: 'silver',
@@ -33,13 +31,13 @@ const deck = [
     },
     {
         id: 2,
-        nome: 'GinoPaoli',
-        cost: ['6', 'R', 'R'],
+        nome: 'Sigfried possente dragone',
+        cost: ['6', 'B'],
         tipo: 'Artifact Creatur',
-        specificita: 'Spirit',
+        subtipo: 'Spirit',
         espansione: {
-            expNumber: 12,
-            rarity: 'silver',
+            expNumber: 18,
+            rarity: 'golden',
         },
         abilita: {
             costoAbilita: ['R', 'T'],
@@ -51,19 +49,19 @@ const deck = [
         },
         illustratore: 'ciaociao',
         numeroCollezione: '127/350',
-        forza: '13',
-        costituzione: '13',
+        forza: '18',
+        costituzione: '25',
         bordo: '#12345'
     },
     {
         id: 3,
-        nome: 'GinoPaoli',
-        cost: ['6', 'R', 'R'],
-        tipo: 'Artifact Creatur',
-        specificita: 'Spirit',
+        nome: 'drago bianco occhi blu',
+        cost: ['6', 'w', 'w'],
+        tipo: 'Dragon',
+        subtipo: 'Spirit',
         espansione: {
-            expNumber: 12,
-            rarity: 'silver',
+            expNumber: 15,
+            rarity: 'gold',
         },
         abilita: {
             costoAbilita: ['R', 'T'],
@@ -75,12 +73,11 @@ const deck = [
         },
         illustratore: 'ciaociao',
         numeroCollezione: '127/350',
-        forza: '13',
-        costituzione: '13',
+        forza: '12',
+        costituzione: '9',
         bordo: '#12345'
     },
 ]
-
 
 
 
@@ -89,8 +86,10 @@ const generateCardstructure = (obj) => {
 
     // inserimento oggetto in pagina
     const cardStructure =
-        `<ul>
+        `<div class= "d-flex">
+        <ul>
         <strong>-----Top card------</strong>
+        <li><strong>ID:</strong> ${obj.id}</li>
         <li><strong>Nome:</strong> ${obj.nome}</li>
         <li><strong>Costo:</strong> ${obj.cost.join(', ')}</li>
         <li><strong>Tipo:</strong> ${obj.tipo} - ${obj.specificita}</li>
@@ -102,34 +101,86 @@ const generateCardstructure = (obj) => {
         <strong>----Flavor-text----</strong> 
         <li><i>${obj.flavorText.testo}</i> </li>
         <li><strong>Autore:</strong> ${obj.flavorText.autore}</li>
-        <strong>------Bottom obj-------</strong>
+        <strong>------Bottom card-------</strong>
         <li><strong>Illustratore</strong> ${obj.illustratore}</li>
         <li><strong>N di collezione</strong> ${obj.numeroCollezione}</li>
         <li><strong>Forza / costituzione</strong> ${obj.forza}/${obj.costituzione}</li>
-          </ul>` ;
+          </ul>
+          </div>` ;
 
     //   risultato
     return cardStructure;
 }
 
+
+//* ------------------------------------ Parte 2 ----------------------------//
 // Completiamo il nostro archivio delle carte aggiungendo i seguenti step:
 // Creiamo un mazzo di carte
 // Stampiamo tutte  le carte su schermo
 // Aggiungiamo un piccolo form in HTML
 // Ragioniamo pian pianino sulla logica dei filtri
 
-// creazione del ciclo for per l'array di carte
+// creazione di una funzione per la stampa in pagine di deck e carte
+const generateDeck = (deck) => {
 
-// variabile d'appoggio
-let printingCard = '';
-for (let i = 0; i < deck.length; i++) {
-    const currentCard = deck[i];
-    printingCard += generateCardstructure(currentCard);
+    // recupero elemento html
+    let cardDisplay = document.getElementById('card-display');
+
+    // variabile d'appoggio
+    let printingCard = '';
+
+    for (let i = 0; i < deck.length; i++) {
+        const currentCard = deck[i];
+        printingCard += generateCardstructure(currentCard);
+    }
+
+    // stampa card in pagina
+    cardDisplay.innerHTML = printingCard;
 }
 
-// recupero elemento html
-let cardDisplay = document.getElementById('card-display');
+generateDeck(starterDeck);
 
-// stampa card in pagina
+// ---------------------------------------
 
-cardDisplay.innerHTML = printingCard;
+// recupero id form html
+
+let select = document.getElementById('Attributes');
+let testo = document.getElementById('testo');
+const filterButton = document.getElementById('filter-button');
+
+// ------------------------- Inizializzazzione filtro ---------------------------//
+
+// aggiunta evento al click del bottone
+
+filterButton.addEventListener('click', () => {
+
+    // recupero value form
+    const selectValue = select.value;
+    console.log(selectValue);
+    const textValue = testo.value;
+    console.log(textValue);
+    // se non si effettuano criteri di ricerca
+
+    if (selectValue === 'all') {
+        generateDeck(starterDeck);
+        return;
+    }
+
+    // array con le carte che hanno le specifiche selezionate dall'utente
+    const filteredDeck = [];
+
+    // ciclo per il controllo delle card
+    for (let i = 0; i < starterDeck.length; i++) {
+        const currentCard = starterDeck[i];
+        if (currentCard[selectValue] == textValue) {
+            filteredDeck.push(currentCard);
+        }
+    }
+    console.log(filteredDeck);
+
+    generateDeck(filteredDeck);
+});
+
+
+
+

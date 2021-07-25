@@ -10,6 +10,25 @@
 </head>
 
 <body>
+    <!-- creazione input per il filtro -->
+    <div class="input-section">
+        <!-- selezione -->
+        <select name="" id="Attributes">
+            <option selected value="all">All</option>
+            <option value="id">ID</option>
+            <option value="nome">Nome</option>
+            <option value="tipo">Tipo</option>
+            <option value="subtipo">subtipo</option>
+            <option value="espansione">Espansione</option>
+            <option value="forza">Forza</option>
+            <option value="forza">Forza</option>
+
+        </select>
+        <!-- testo -->
+        <input type="text" name="testo" id="testo" placeholder="Inserisci il testo">
+        <!-- bottone -->
+        <button id="filter-button">Filtra</button>
+    </div>
     <div id="card-display" class="d-flex"></div>
     <script src="./js/main.js"></script>
 </body>

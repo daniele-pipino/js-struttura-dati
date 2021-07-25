@@ -3,3 +3,11 @@
     justify-content: space-between;
     border: 1px solid black;
 }
+
+.input-section{
+    margin: 30px 0;
+}
+
+.hidden{
+    display: none;
+}
