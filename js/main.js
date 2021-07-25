@@ -37,7 +37,7 @@ const starterDeck = [
         subtipo: 'Spirit',
         espansione: {
             expNumber: 18,
-            rarity: 'golden',
+            rarity: 'gold',
         },
         abilita: {
             costoAbilita: ['R', 'T'],
@@ -56,7 +56,7 @@ const starterDeck = [
     {
         id: 3,
         nome: 'drago bianco occhi blu',
-        cost: ['6', 'w', 'w'],
+        cost: ['6', 'W', 'W'],
         tipo: 'Dragon',
         subtipo: 'Spirit',
         espansione: {
@@ -93,6 +93,7 @@ const generateCardstructure = (obj) => {
         <li><strong>Nome:</strong> ${obj.nome}</li>
         <li><strong>Costo:</strong> ${obj.cost.join(', ')}</li>
         <li><strong>Tipo:</strong> ${obj.tipo} - ${obj.specificita}</li>
+        <strong>-----Espansione------</strong>
         <li><strong>Espansione:</strong> ${obj.espansione.expNumber}
         <li><strong>Rarità:</strong> ${obj.espansione.rarity}</li>
         <strong>--------Abilità------</strong>
@@ -176,6 +177,7 @@ filterButton.addEventListener('click', () => {
 
         // gestione filtro con diverse casistiche 
         switch (selectValue) {
+
             // gestione numeri semplici
             case 'id':
             case 'forza':
@@ -184,6 +186,42 @@ filterButton.addEventListener('click', () => {
                     filteredDeck.push(currentCard);
                 }
                 break;
+
+            // gestione oggetti complessi
+
+            // sezione espansione
+            case 'espansione-expNumber':
+                if (currentCard.espansione.expNumber == textValue) {
+                    filteredDeck.push(currentCard);
+                }
+                break;
+            case 'espansione-rarity':
+                if (currentCard.espansione.rarity.includes(textValue)) {
+                    filteredDeck.push(currentCard);
+                }
+                break;
+            // sezione abilità
+            case 'abilita-cost':
+                if (currentCard.abilita.costoAbilita.includes(textValue)) {
+                    filteredDeck.push(currentCard);
+                }
+                break;
+            case 'abilita-description':
+                if (currentCard.abilita.descrizione == textValue) {
+                    filteredDeck.push(currentCard);
+                }
+                break;
+            // sezione flavor text
+            case 'flavor-text':
+                if (currentCard.flavorText.testo == textValue) {
+                    filteredDeck.push(currentCard);
+                }
+                break;
+            case 'flavor-author':
+                if (currentCard.flavorText.autore == textValue) {
+                    filteredDeck.push(currentCard);
+                }
+
             // gestione stringhe ed array di stringhe
             default:
                 if (currentCard[selectValue].includes(textValue)) {
